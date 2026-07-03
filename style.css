@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3vh 5vw;
+}
+
+.logo {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #4b5563;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3vw;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #9ca3af;
+    font-size: 1.1vw;
+}
+
+.user-btn {
+    padding: 1.5vh 2.5vw;
+    background-color: #e0f2fe;
+    color: #38bdf8;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vh 8vw;
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-left h1 {
+    font-size: 3.5vw;
+    color: #4b5563;
+    line-height: 1.3;
+    margin-bottom: 2vh;
+}
+
+.hero-left h1 span {
+    color: #38bdf8;
+}
+
+.hero-left p {
+    font-size: 1.1vw;
+    color: #9ca3af;
+    margin-bottom: 5vh;
+    line-height: 1.6;
+    width: 90%;
+}
+
+.book-btn {
+    padding: 2vh 3vw;
+    background-color: #38bdf8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero-right img {
+    width: 90%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+    .logo {
+        font-size: 4vw;
+    }
+
+    .nav-links a {
+        font-size: 2.5vw;
+    }
+
+    .user-btn {
+        font-size: 2.5vw;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5vh;
+    }
+
+    .hero-left h1 {
+        font-size: 6vw;
+    }
+
+    .hero-left p {
+        font-size: 3vw;
+        width: 100%;
+    }
+
+    .book-btn {
+        font-size: 3vw;
+        padding: 2vh 5vw;
+    }
+
+    .hero-right img {
+        width: 70%;
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .logo {
+        font-size: 6vw;
+    }
+
+    .user-btn {
+        font-size: 4vw;
+        padding: 1.5vh 4vw;
+    }
+
+    .hero-left h1 {
+        font-size: 8vw;
+    }
+
+    .hero-left p {
+        font-size: 4.5vw;
+    }
+
+    .book-btn {
+        font-size: 4.5vw;
+        padding: 2vh 6vw;
+    }
+
+    .hero-right img {
+        width: 95%;
+    }
+}
