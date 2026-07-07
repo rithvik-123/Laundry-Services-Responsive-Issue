@@ -1,3 +1,16 @@
+/* Learning to use CSS variables to keep my colors organized */
+:root {
+    --primary-blue: #38bdf8;
+    --dark-text: #4b5563;
+    --light-text: #9ca3af;
+    
+    /* I initially tried to use these variables inside the @media queries below, 
+       but I learned that standard CSS doesn't actually support variables for media query breakpoints yet! 
+       So I had to hardcode 1024px and 768px down below. */
+    --tablet-bp: 1024px;
+    --mobile-bp: 768px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,6 +24,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Adding a smooth transition to everything so the layout doesn't snap abruptly when resizing */
+nav, .hero, .hero-left, .hero-right, h1, p, img {
+    transition: all 0.4s ease-in-out;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -21,7 +39,7 @@ nav {
 .logo {
     font-size: 2vw;
     font-weight: bold;
-    color: #4b5563;
+    color: var(--dark-text);
 }
 
 .nav-links {
@@ -31,14 +49,14 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #9ca3af;
+    color: var(--light-text);
     font-size: 1.1vw;
 }
 
 .user-btn {
     padding: 1.5vh 2.5vw;
     background-color: #e0f2fe;
-    color: #38bdf8;
+    color: var(--primary-blue);
     border: none;
     border-radius: 8px;
     font-weight: bold;
@@ -46,6 +64,19 @@ nav {
     cursor: pointer;
 }
 
+.mobile-menu-container {
+    display: none;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--dark-text);
+}
+
+/* Default desktop hero is flex-direction: row (side-by-side) */
 .hero {
     display: flex;
     align-items: center;
@@ -53,30 +84,29 @@ nav {
     padding: 5vh 8vw;
 }
 
-.hero-left {
+.hero-left, .hero-right {
     flex: 1;
 }
 
 .hero-right {
-    flex: 1;
     display: flex;
     justify-content: center;
 }
 
 .hero-left h1 {
     font-size: 3.5vw;
-    color: #4b5563;
+    color: var(--dark-text);
     line-height: 1.3;
     margin-bottom: 2vh;
 }
 
 .hero-left h1 span {
-    color: #38bdf8;
+    color: var(--primary-blue);
 }
 
 .hero-left p {
     font-size: 1.1vw;
-    color: #9ca3af;
+    color: var(--light-text);
     margin-bottom: 5vh;
     line-height: 1.6;
     width: 90%;
@@ -84,7 +114,7 @@ nav {
 
 .book-btn {
     padding: 2vh 3vw;
-    background-color: #38bdf8;
+    background-color: var(--primary-blue);
     color: white;
     border: none;
     border-radius: 12px;
@@ -99,79 +129,77 @@ nav {
     object-fit: contain;
 }
 
+/* =========================================
+   TABLET BREAKPOINT
+   Keeping it side-by-side, just shrinking sizes
+   ========================================= */
 @media (max-width: 1024px) {
     .logo {
+        font-size: 3vw;
+    }
+    .nav-links a {
+        font-size: 1.5vw;
+    }
+    .user-btn {
+        font-size: 1.5vw;
+    }
+    .hero-left h1 {
         font-size: 4vw;
     }
-
-    .nav-links a {
-        font-size: 2.5vw;
+    .hero-left p {
+        font-size: 1.5vw;
     }
+    .book-btn {
+        font-size: 1.8vw;
+    }
+    .hero-right img {
+        width: 100%; /* Making the image take up a bit more of its half */
+    }
+}
 
+/* =========================================
+   MOBILE BREAKPOINT
+   This is where we finally change flex-direction to column!
+   ========================================= */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide standard links */
+    }
+    .mobile-menu-container {
+        display: block; /* Show hamburger menu */
+    }
+    .logo {
+        font-size: 6vw;
+    }
     .user-btn {
-        font-size: 2.5vw;
+        font-size: 3vw;
+        padding: 1.5vh 4vw;
     }
-
+    
+    /* Stacking the hero sections vertically */
     .hero {
         flex-direction: column;
         text-align: center;
+        padding: 2vh 5vw;
     }
-
     .hero-left {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 5vh;
     }
-
     .hero-left h1 {
-        font-size: 6vw;
+        font-size: 7vw;
     }
-
     .hero-left p {
-        font-size: 3vw;
+        font-size: 4vw;
         width: 100%;
     }
-
     .book-btn {
-        font-size: 3vw;
-        padding: 2vh 5vw;
-    }
-
-    .hero-right img {
-        width: 70%;
-        max-height: 50vh;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
-    .logo {
-        font-size: 6vw;
-    }
-
-    .user-btn {
         font-size: 4vw;
-        padding: 1.5vh 4vw;
-    }
-
-    .hero-left h1 {
-        font-size: 8vw;
-    }
-
-    .hero-left p {
-        font-size: 4.5vw;
-    }
-
-    .book-btn {
-        font-size: 4.5vw;
         padding: 2vh 6vw;
     }
-
     .hero-right img {
-        width: 95%;
+        width: 85%;
     }
 }
